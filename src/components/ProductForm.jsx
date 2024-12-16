@@ -12,7 +12,7 @@ const ProductForm = ({ setProducts }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value
     }));
@@ -25,7 +25,7 @@ const ProductForm = ({ setProducts }) => {
 
     try {
       const response = await axios.post('https://aman-singh-reachify-full-stack.onrender.com/api/products/', newProduct);
-      setProducts((prev) => [...prev, response.data]);
+      setProducts(prev => [response.data, ...prev]);
       setFormData({
         name: '',
         description: '',

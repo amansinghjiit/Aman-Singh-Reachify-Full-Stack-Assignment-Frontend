@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 
 const App = () => {
+  const [products, setProducts] = useState([]);
+
   return (
     <div className="app">
       <h1>Product Management</h1>
-      <ProductForm />
-      <ProductList />
+      <ProductList products={products} setProducts={setProducts} />
     </div>
   );
 };
 
 export default App;
-
