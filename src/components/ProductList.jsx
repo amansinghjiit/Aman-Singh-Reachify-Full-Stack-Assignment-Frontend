@@ -7,26 +7,24 @@ const ProductList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetching products from the backend API
   useEffect(() => {
     axios.get('https://aman-singh-reachify-full-stack.onrender.com/api/products/')
       .then(response => {
         setProducts(response.data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         setError('Error fetching products');
         setLoading(false);
       });
   }, []);
 
-  // Handle delete action
   const handleDelete = (id) => {
     axios.delete(`https://aman-singh-reachify-full-stack.onrender.com/api/products/${id}/`)
       .then(() => {
         setProducts(products.filter(product => product.id !== id));
       })
-      .catch(err => {
+      .catch(() => {
         setError('Error deleting product');
       });
   };

@@ -1,70 +1,93 @@
-/* Add this in your CSS file or within the appropriate styles for the SingleProduct component */
+.app {
+    text-align: center;
+    margin: 20px;
+}
 
-/* Wrapper for the single product details */
-.single-product {
-    display: table;
-    width: 100%;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Table row styling */
-  .single-product div {
-    display: table-row;
-    margin-bottom: 10px;
-  }
-  
-  /* Table column styling */
-  .single-product div p {
-    display: table-cell;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Header cells */
-  .single-product div p strong {
+.app h1 {
+    font-size: 2rem;
     font-weight: bold;
-  }
+    color: #333;
+}
   
-  /* Last row without bottom border */
-  .single-product div:last-child p {
-    border-bottom: none;
-  }
-  
-  /* Make the whole table look cleaner with spacing */
-  .single-product {
-    margin: 20px auto;
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  .single-product h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Add this CSS to your global stylesheet or in the component-specific CSS */
-.product-list {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .product-list h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .single-product {
+
+.product-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr auto;
+    align-items: center;
+    padding: 0px 10px;
+    border: 1px solid black;
+    border-radius:5px;
+    margin:10px 0;
+}
+
+.product-item p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.product-item button {
+    padding: 6px 12px;
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-item button:hover {
+    background-color: #e60000;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr auto;
+    gap: 15px;
+    padding: 15px;
     border: 1px solid #ddd;
-    padding: 20px;
     border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+    background-color: #f4f4f9;
+    margin: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form input {
+    padding: 10px 12px;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form input, form button {
+    transition: all 0.3s ease;
+}
+
+form input:disabled,
+form button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}

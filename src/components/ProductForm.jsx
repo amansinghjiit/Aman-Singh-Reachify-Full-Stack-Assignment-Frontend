@@ -2,80 +2,82 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ProductForm = ({ setProducts }) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [brand, setBrand] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    price: '',
+    quantity: '',
+    brand: ''
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { name, description, price, quantity, brand } = formData;
+    const newProduct = { name, description, price: parseFloat(price), quantity: parseInt(quantity), brand };
 
-    // Ensure price is a float and quantity is an integer
-    const newProduct = {
-      name,
-      description,
-      price: parseFloat(price), // Convert price to float
-      quantity: parseInt(quantity, 10), // Convert quantity to integer
-      brand,
-    };
-
-    // Log the new product data for debugging
-    console.log('Submitting product:', newProduct);
-
-    axios
-      .post('https://aman-singh-reachify-full-stack.onrender.com/api/products/', newProduct)
-      .then((response) => {
-        // Update the product list instantly by adding the new product
-        setProducts((prevProducts) => [...prevProducts, response.data]);
-
-        // Reset form fields
-        setName('');
-        setDescription('');
-        setPrice('');
-        setQuantity('');
-        setBrand('');
-      })
-      .catch((error) => {
-        console.error('Error adding product:', error);
+    try {
+      const response = await axios.post('https://aman-singh-reachify-full-stack.onrender.com/api/products/', newProduct);
+      setProducts((prev) => [...prev, response.data]);
+      setFormData({
+        name: '',
+        description: '',
+        price: '',
+        quantity: '',
+        brand: ''
       });
+    } catch (error) {
+      console.error('Error adding product:', error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        name="name"
         placeholder="Product Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={formData.name}
+        onChange={handleChange}
         required
       />
       <input
         type="text"
+        name="description"
         placeholder="Product Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        value={formData.description}
+        onChange={handleChange}
         required
       />
       <input
         type="number"
+        name="price"
         placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
+        value={formData.price}
+        onChange={handleChange}
         required
       />
       <input
         type="number"
+        name="quantity"
         placeholder="Quantity"
-        value={quantity}
-        onChange={(e) => setQuantity(e.target.value)}
+        value={formData.quantity}
+        onChange={handleChange}
         required
       />
       <input
         type="text"
+        name="brand"
         placeholder="Brand"
-        value={brand}
-        onChange={(e) => setBrand(e.target.value)}
+        value={formData.brand}
+        onChange={handleChange}
         required
       />
       <button type="submit">Add Product</button>
