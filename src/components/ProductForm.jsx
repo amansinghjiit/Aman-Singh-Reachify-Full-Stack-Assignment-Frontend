@@ -25,11 +25,7 @@ const ProductForm = ({ setProducts }) => {
 
     try {
       const response = await axios.post('https://aman-singh-reachify-full-stack.onrender.com/api/products/', newProduct);
-      
-      // Add the new product to the top of the list without page reload
       setProducts((prev) => [response.data, ...prev]);
-      
-      // Reset form data after successful submission
       setFormData({
         name: '',
         description: '',
