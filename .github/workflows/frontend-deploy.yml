@@ -24,6 +24,6 @@ jobs:
 
     - name: Build and push React Docker image
       run: |
-        cd frontend
+        cd frontend  # Ensure this directory exists at the root level
         docker build -t ${{ secrets.DOCKER_USERNAME }}/react-frontend:latest .
         docker push ${{ secrets.DOCKER_USERNAME }}/react-frontend:latest
