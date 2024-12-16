@@ -1,0 +1,70 @@
+/* Add this in your CSS file or within the appropriate styles for the SingleProduct component */
+
+/* Wrapper for the single product details */
+.single-product {
+    display: table;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Table row styling */
+  .single-product div {
+    display: table-row;
+    margin-bottom: 10px;
+  }
+  
+  /* Table column styling */
+  .single-product div p {
+    display: table-cell;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Header cells */
+  .single-product div p strong {
+    font-weight: bold;
+  }
+  
+  /* Last row without bottom border */
+  .single-product div:last-child p {
+    border-bottom: none;
+  }
+  
+  /* Make the whole table look cleaner with spacing */
+  .single-product {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .single-product h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Add this CSS to your global stylesheet or in the component-specific CSS */
+.product-list {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .product-list h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .single-product {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
